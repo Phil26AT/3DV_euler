@@ -22,5 +22,5 @@ module load hdf5 p7zip lz4
 
 module load eth_proxy
 
-export PATH="$PATH:{$INSTALL_DIR}bin/"
-export PATH=$PATH:INSTALL_DIR # a bit hacky but serves the purpose of linking to custom libraries
+export PATH="$PATH:${INSTALL_DIR}bin/"
+export PATH=$PATH:$INSTALL_DIR # a bit hacky but serves the purpose of linking to custom libraries
