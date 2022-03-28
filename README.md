@@ -17,7 +17,7 @@ source install_colmap.sh
 
 colmap -h
 
-source_install_pcl.sh
+source install_pcl.sh
 
 # stop the interactive shell session
 exit
