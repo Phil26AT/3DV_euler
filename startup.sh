@@ -1,7 +1,7 @@
 # Optional: change the dir where all the libraries are installed to
 export INSTALL_DIR=$HOME/.local/
 
-module load gcc/6.3.0
+module load gcc/8.2.0
 module load cmake/3.11.0
 
 module load boost eigen glog gflags glew

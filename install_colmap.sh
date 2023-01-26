@@ -3,7 +3,7 @@ export CURRDIR=$(pwd)
 # # Build Ceres
 git clone https://ceres-solver.googlesource.com/ceres-solver
 cd ceres-solver
-git checkout 2.0.0 # Checkout the latest release
+git checkout 2.1.0 # Checkout the latest release
 mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLES=OFF -DEXPORT_BUILD_DIR=ON .. -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR -DBUILD_TESTS=OFF
@@ -50,6 +50,11 @@ cd $CURRDIR
 
 # Install pycolmap
 git clone https://github.com/colmap/pycolmap.git --recursive
+cd pycolmap
+pip install --user -e . -v
+
+# Install pyceres
+git clone https://github.com/cvg/pyceres.git --recursive
 cd pycolmap
 pip install --user -e . -v
 
