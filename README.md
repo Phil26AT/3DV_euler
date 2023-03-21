@@ -35,7 +35,7 @@ source startup.sh
 colmap -h
 ```
 
-If you want to automatically run `setup.sh` on every login, you can add the following line to your `~/.bash_profile`:
+If you want to automatically run `setup.sh` on every login, you can add the following lines to your `~/.bash_profile`:
 
 ```
 if [ -f <path-to-startup.sh> ]; 

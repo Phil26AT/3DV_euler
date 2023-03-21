@@ -28,4 +28,4 @@ export PATH="$PATH:${INSTALL_DIR}bin/"
 # a bit hacky but serves the purpose of linking to custom libraries
 export PATH=$PATH:$INSTALL_DIR
 # add flann to path of colmap
-# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${INSTALL_DIR}lib/
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${INSTALL_DIR}lib/

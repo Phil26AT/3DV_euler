@@ -7,3 +7,4 @@ echo "Commenting line 39 and 41 in colmap/src/feature/sift.cc"
 sed -i '39s/^/\/\/ /;41s/^/\/\/ /' src/feature/sift.cc
 echo "Adding CMAKE_CUDA_ARCHITECTURES to 'native' to colmap/CMakeLists.txt"
 sed -i '/^#.*$/a set(CMAKE_CUDA_ARCHITECTURES native)' CMakeLists.txt
+cd ..
