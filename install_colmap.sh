@@ -37,6 +37,8 @@ CXXFLAGS="-fPIC" CFLAGS="-fPIC" cmake .. -DCMAKE_BUILD_TYPE=Release \
     -DCUDA_ARCHS="Pascal;Turing;Volta" \
     -DFREEIMAGE_INCLUDE_DIR_HINTS=$INSTALL_DIR \
     -DFREEIMAGE_LIBRARY_DIR_HINTS=$INSTALL_DIR \
+    -DFLANN_INCLUDE_DIR_HINTS=$INSTALL_DIR \
+    -DFLANN_LIBRARY_DIR_HINTS=$INSTALL_DIR \
     -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR
 
 # Check that the compilation finished successfully.
@@ -47,8 +49,8 @@ ctest
 make install
 
 # add path hints for colmap
-sed -i "s#^\(set(FLANN_INCLUDE_DIR_HINTS\).*#\1 ${INSTALL_DIR}include)#" ${INSTALL_DIR}share/colmap/COLMAPConfig.cmake
-sed -i "s#^\(set(FLANN_LIBRARY_DIR_HINTS\).*#\1 ${INSTALL_DIR}lib)#" ${INSTALL_DIR}share/colmap/COLMAPConfig.cmake
+#sed -i "s#^\(set(FLANN_INCLUDE_DIR_HINTS\).*#\1 ${INSTALL_DIR}include)#" ${INSTALL_DIR}share/colmap/COLMAPConfig.cmake
+#sed -i "s#^\(set(FLANN_LIBRARY_DIR_HINTS\).*#\1 ${INSTALL_DIR}lib)#" ${INSTALL_DIR}share/colmap/COLMAPConfig.cmake
 
 cd $CURRDIR
 
