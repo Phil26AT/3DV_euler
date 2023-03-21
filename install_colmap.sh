@@ -47,8 +47,8 @@ ctest
 make install
 
 # add path hints for colmap
-sed -i 's/^set(FLANN_INCLUDE_DIR_HINTS.*/set(FLANN_INCLUDE_DIR_HINTS ${INSTALL_DIR}include)/' ${INSTALL_DIR}share/colmap/COLMAPConfig.cmake
-sed -i 's/^set(FLANN_LIBRARY_DIR_HINTS.*/set(FLANN_LIBRARY_DIR_HINTS ${INSTALL_DIR}lib)/' ${INSTALL_DIR}share/colmap/COLMAPConfig.cmake
+sed -i 's/^set(FLANN_INCLUDE_DIR_HINTS.*/set(FLANN_INCLUDE_DIR_HINTS "${INSTALL_DIR}include")/' ${INSTALL_DIR}share/colmap/COLMAPConfig.cmake
+sed -i 's/^set(FLANN_LIBRARY_DIR_HINTS.*/set(FLANN_LIBRARY_DIR_HINTS "${INSTALL_DIR}lib")/' ${INSTALL_DIR}share/colmap/COLMAPConfig.cmake
 
 cd $CURRDIR
 
