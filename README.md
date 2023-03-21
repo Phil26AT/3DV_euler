@@ -35,6 +35,15 @@ source startup.sh
 colmap -h
 ```
 
+If you want to automatically run `setup.sh` on every login, you can add the following line to your `~/.bash_profile`:
+
+```
+if [ -f <path-to-startup.sh> ]; 
+then 
+    source <path-to-startup.sh>; 
+fi
+```
+
 ## Cuda support
 
 COLMAP will be built without CUDA support by default. Though, it's possible to define to build with 
