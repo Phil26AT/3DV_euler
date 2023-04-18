@@ -30,14 +30,17 @@ cd build
 # For enabling CUDA the GL/glew.h include in sift.cc needs to be fixed. (outcomment the macro check).
 # Then set cuda_enabled=ON
 CXXFLAGS="-fPIC" CFLAGS="-fPIC" cmake .. -DCMAKE_BUILD_TYPE=Release \
-         -DBoost_USE_STATIC_LIBS=ON \
-         -DGUI_ENABLED=OFF \
-         -DCUDA_ENABLED=OFF \
-         -DTESTS_ENABLED=ON \
-         -DCUDA_ARCHS="Pascal;Turing;Volta" \
-         -DFREEIMAGE_INCLUDE_DIR_HINTS=$INSTALL_DIR \
-         -DFREEIMAGE_LIBRARY_DIR_HINTS=$INSTALL_DIR \
-         -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR 
+    -DBoost_USE_STATIC_LIBS=ON \
+    -DGUI_ENABLED=OFF \
+    -DCUDA_ENABLED=OFF \
+    -DCMAKE_CUDA_ARCHITECTURES="native" \
+    -DTESTS_ENABLED=ON \
+    -DCUDA_ARCHS="Pascal;Turing;Volta" \
+    -DFREEIMAGE_INCLUDE_DIR_HINTS=$INSTALL_DIR \
+    -DFREEIMAGE_LIBRARY_DIR_HINTS=$INSTALL_DIR \
+    -DFLANN_INCLUDE_DIR_HINTS="${INSTALL_DIR}include" \
+    -DFLANN_LIBRARY_DIR_HINTS="${INSTALL_DIR}lib" \
+    -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR
 
 # Check that the compilation finished successfully.
 make -j16
@@ -51,6 +54,10 @@ cd $CURRDIR
 # Install pycolmap
 git clone https://github.com/colmap/pycolmap.git --recursive
 cd pycolmap
+# comment out ba_global_use_pba and ba_global_pba_gpu_index
+sed -i 's/\.def_readwrite("ba_global_use_pba"/\/\/\.def_readwrite("ba_global_use_pba"/g' pipeline/sfm.cc
+sed -i 's/\.def_readwrite("ba_global_pba_gpu_index"/\/\/\.def_readwrite("ba_global_pba_gpu_index"/g' pipeline/sfm.cc
+sed -i 's/\&Opts::ba_global_pba_gpu_index)/\/\/\&Opts::ba_global_pba_gpu_index)/g' pipeline/sfm.cc
 pip install --user -e . -v
 
 # Install pyceres
